@@ -20,7 +20,6 @@ ChatScreen chatScreen = ChatScreen();
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
   static String messageText;
-  static String userName;
   final messageController = TextEditingController();
 
   //============================= init state
@@ -63,7 +62,6 @@ class _ChatScreenState extends State<ChatScreen> {
           IconButton(
               icon: Icon(Icons.logout),
               onPressed: () {
-
                 _auth.signOut();
                 Navigator.pushNamed(context, WelcomeScreen.id);
               }),
@@ -96,7 +94,8 @@ class _ChatScreenState extends State<ChatScreen> {
                         messageController.clear();
                         _fireStore.collection('messages').add({
                           'text': messageText,
-                          'sender': loggedInUser.email
+                          'sender': loggedInUser.email,
+                          'userName': loggedInUser.uid
                         });
                       },
                       child: Icon(
@@ -130,11 +129,13 @@ class MessagesStream extends StatelessWidget {
           //solution
           final messageText = message.get('text');
           final messageSender = message.get('sender');
+         final messageUserName = message.get('userName');
           final currentUser = loggedInUser.email;
 
           final messageBubble = MessageBubble(
             text: messageText,
             sender: messageSender,
+            userName: messageUserName,
             isMe: currentUser == messageSender,
           );
           messageBubbles.add(messageBubble);

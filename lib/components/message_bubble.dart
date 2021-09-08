@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 class MessageBubble extends StatelessWidget {
-  const MessageBubble({this.sender, this.text, this.isMe});
+  const MessageBubble({this.sender, this.text, this.isMe, this.userName});
 
-  final String sender, text;
+  final String sender, text, userName;
   final bool isMe;
 
   @override
@@ -13,7 +13,7 @@ class MessageBubble extends StatelessWidget {
         crossAxisAlignment: isMe? CrossAxisAlignment.end : CrossAxisAlignment.start,
         children: [
           Text(
-            sender,
+            userName,
             style: TextStyle(fontSize: 12.0, color: Colors.black45),
           ),
           Material(

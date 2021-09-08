@@ -14,7 +14,7 @@ class RegistrationScreen extends StatefulWidget {
 
 class _RegistrationScreenState extends State<RegistrationScreen> {
   final _auth = FirebaseAuth.instance;
-  String email, password;
+  String email, password, userName;
   bool showSpinner = false;
 
   @override
@@ -41,6 +41,8 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(
                 height: 48.0,
               ),
+              //============================== email
+              //================================================
               TextField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
@@ -53,6 +55,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
               SizedBox(
                 height: 8.0,
               ),
+              //==================================== user name
+              //==================================================
+              TextField(
+                keyboardType: TextInputType.text,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  userName = value;
+                },
+                decoration: kTextFieldDecoration.copyWith(
+                    hintText: 'Enter your user name'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              //================================== password
+              //===============================================
               TextField(
                 obscureText: true,
                 textAlign: TextAlign.center,
