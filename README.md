@@ -1,6 +1,15 @@
 # chat_app_task_8_cat
 
-A new Flutter project.
+# I use firebase in this project 
+multiDexEnabled true 
+
+must be writen in android/app/build.gradle
+
+
+
+
+
+
 
 ## Getting Started
 
